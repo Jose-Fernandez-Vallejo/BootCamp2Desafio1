@@ -1,5 +1,8 @@
 package com.example.Desafio1.Entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -15,7 +19,7 @@ import javax.persistence.Table;
 @Table(name = "CLIENTE")
 public class Cliente {
 
-Long id;
+	Long id;
 	
 	String nombre;
 	
@@ -24,6 +28,8 @@ Long id;
 	String apellido2;
 	
 	String nDocumento;
+	
+	List<Contrato> listaContratos;
 	
 	
 	@Id
@@ -69,6 +75,16 @@ Long id;
 
 	public void setnDocumento(String nDocumento) {
 		this.nDocumento = nDocumento;
+	}
+
+
+	@OneToMany(mappedBy = "contrato", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	public List<Contrato> getListaContratos() {
+		return listaContratos;
+	}
+
+	public void setListaContratos(List<Contrato> listaContratos) {
+		this.listaContratos = listaContratos;
 	}
 
 	
