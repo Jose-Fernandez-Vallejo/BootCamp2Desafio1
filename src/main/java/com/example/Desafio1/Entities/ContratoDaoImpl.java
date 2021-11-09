@@ -48,6 +48,7 @@ Session session = manager.unwrap(Session.class);
 	@Override
 	public List<Contrato> searchByCliente(Long idCliente) {
 		Session session = manager.unwrap(Session.class);
+
 		
 List<Contrato> lista = session.createQuery("FROM Contrato where ID_CLIENTE = " + idCliente).getResultList();
 		

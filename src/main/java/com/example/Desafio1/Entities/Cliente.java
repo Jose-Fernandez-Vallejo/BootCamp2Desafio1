@@ -78,7 +78,7 @@ public class Cliente {
 	}
 
 
-	@OneToMany(mappedBy = "contrato", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	public List<Contrato> getListaContratos() {
 		return listaContratos;
 	}

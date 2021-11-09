@@ -1,6 +1,8 @@
 package com.example.Desafio1.Entities;
 
-import java.sql.Date;
+
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,8 +24,15 @@ public class Contrato {
 
 	Long id;
 	
+	@Column(name = "FECHAVIGENCIA", nullable = false)
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "YYYY/MM/DD")
 	Date fechaVigencia;
 	
+	
+	@Column(name = "FECHACADUCIDAD", nullable = false)
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "YYYY/MM/DD")
 	Date fechaCaducidad;
 	
 	Double precio;
@@ -42,9 +51,7 @@ public class Contrato {
 		this.id = id;
 	}
 
-	@Column(name = "FECHAVIGENCIA", nullable = false)
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "YYYY/MM/DD")
+
 	public Date getFechaVigencia() {
 		return fechaVigencia;
 	}
@@ -52,9 +59,7 @@ public class Contrato {
 	public void setFechaVigencia(Date fechaVigencia) {
 		this.fechaVigencia = fechaVigencia;
 	}
-	@Column(name = "FECHACADUCIDAD", nullable = false)
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "YYYY/MM/DD")
+
 	public Date getFechaCaducidad() {
 		return fechaCaducidad;
 	}
