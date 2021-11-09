@@ -3,6 +3,7 @@ package com.example.Desafio1.Entities;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ClienteDaoImpl implements ClienteDaoI{
 		
 		Session session = manager.unwrap(Session.class);
 		
-		List<Cliente> lista = session.createQuery("FROM UNIVERSIDAD").getResultList();
+		List<Cliente> lista = session.createQuery("FROM Cliente").getResultList();
 		
 		session.close();
 		return lista;
@@ -42,7 +43,7 @@ public class ClienteDaoImpl implements ClienteDaoI{
 	public Cliente searchById(Long idCliente) {
 		Session session = manager.unwrap(Session.class);
 		
-		Cliente cliente = (Cliente) session.createQuery("FROM UNIVERSIDAD").uniqueResult();
+		Cliente cliente = (Cliente) session.createQuery("FROM Cliente WHERE ID_CLIENTE =" + idCliente).uniqueResult();
 		
 		session.close();
 		return cliente;
@@ -60,11 +61,12 @@ public class ClienteDaoImpl implements ClienteDaoI{
 	}
 
 	@Override
+
 	public void Update(Cliente cliente) {
 	Session session = manager.unwrap(Session.class);
 		
 		
-		session.update(cliente);;
+		session.saveOrUpdate(cliente);
 		
 		session.close();
 		
