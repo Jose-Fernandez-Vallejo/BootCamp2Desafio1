@@ -6,11 +6,12 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.example.Desafio1.Entities.Cliente;
 import com.example.Desafio1.Entities.ClienteDaoI;
 
-@Repository
+@Service
 public class ClienteServiceImpl implements ClienteServiceI {
 
 	@Autowired
@@ -29,7 +30,6 @@ public class ClienteServiceImpl implements ClienteServiceI {
 	@Transactional
 	public List<Cliente> searchAll() {
 		
-	
 		return clienteDao.searchAll();
 	}
 

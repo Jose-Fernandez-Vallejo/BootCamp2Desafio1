@@ -54,7 +54,7 @@ public class ClienteDaoImpl implements ClienteDaoI{
 		
 	Session session = manager.unwrap(Session.class);
 		
-		
+		manager.remove(manager.merge(cliente));
 		session.delete(cliente);;
 		
 		session.close();
